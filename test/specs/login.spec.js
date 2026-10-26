@@ -6,6 +6,8 @@ const forgotPasswordPage = require('../pages/ForgotPasswordPage');
 const signUpPage = require('../pages/SignUpPage');
 const testData = require('../test-data');
 
+let recordingStarted = false;
+
 function skipIfMissing(context, ...values) {
   if (values.some((value) => !value)) {
     context.skip();
@@ -20,11 +22,23 @@ describe('Login', () => {
     }
 
     const screenshotsDir = path.resolve(__dirname, '../../screenshots/login');
+    const recordingsDir = path.resolve(__dirname, '../../recordings/login');
     fs.mkdirSync(screenshotsDir, { recursive: true });
+    fs.mkdirSync(recordingsDir, { recursive: true });
     await browser.saveScreenshot(path.join(screenshotsDir, `${testCaseId}.png`));
+
+    if (recordingStarted) {
+      await browser.saveRecordingScreen(path.join(recordingsDir, `${testCaseId}.mp4`));
+      recordingStarted = false;
+    }
   });
 
   beforeEach(async () => {
+    recordingStarted = false;
+    if (browser.sessionId) {
+      await browser.startRecordingScreen();
+      recordingStarted = true;
+    }
     await loginPage.open();
   });
 

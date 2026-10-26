@@ -30,12 +30,13 @@ corresponding iOS selectors. Until then, treat iOS results as **not run**.
 
 ## Latest Android run
 
-The expanded login suite was run on 2026-10-26:
+The expanded login suite was run on 2026-10-26 with per-case screenshots and
+screen recordings enabled:
 
 | Result | Cases |
 | --- | --- |
-| Passed | TC_LOG_05, TC_LOG_06, TC_LOG_11, TC_LOG_13 |
-| Failed | TC_LOG_07 — the app exposed one generic required-field message, while the test expected separate messages for both fields |
+| Passed | TC_LOG_05, TC_LOG_06, TC_LOG_13 |
+| Failed | TC_LOG_07 — strict selector matched two required-field elements; TC_LOG_11 — strict selector matched two recovery-title elements |
 | Skipped | TC_LOG_01, TC_LOG_02, TC_LOG_03, TC_LOG_04, TC_LOG_08, TC_LOG_09, TC_LOG_10, TC_LOG_12 |
 
 Skipped cases need authorized test-account data or app-specific selectors
@@ -192,9 +193,11 @@ using the variables listed in `.env.example`.
 The expanded Login suite results are summarized under [Latest Android run](#latest-android-run).
 Record manual outcomes separately if required by the assessment.
 
-The Login spec saves one screenshot per case to `screenshots/login/`; the Forgot
-Password spec saves its screenshots to `screenshots/`. Screenshots are kept
-local and excluded from the public repository.
+The Login spec saves one screenshot per case to `screenshots/login/` and one
+screen recording per case to `recordings/login/`. The Forgot Password spec
+saves its screenshots to `screenshots/`. Screenshots and recordings are kept
+local and excluded from the public repository. Recordings may contain sensitive
+on-screen information; review them before sharing.
 
 ## Troubleshooting
 

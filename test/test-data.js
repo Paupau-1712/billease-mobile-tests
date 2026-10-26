@@ -1,7 +1,7 @@
 module.exports = {
   login: {
     validCredentials: {
-      email: '09481938474',
+      email: '',
       password: ''
     },
     unregisteredCredentials: {
