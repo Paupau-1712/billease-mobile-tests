@@ -1,0 +1,9 @@
+node_modules/
+.env
+apps/
+screenshots/
+*.log
+allure-results/
+allure-report/
+coverage/
+.DS_Store
